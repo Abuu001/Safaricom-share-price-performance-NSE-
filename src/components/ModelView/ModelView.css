@@ -1,0 +1,42 @@
+.ModelView{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0;
+    margin-top: 34px;
+    background-color: #32404C;
+}
+.ModelView ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.ModelView .Nav_link{
+    text-decoration: none;
+    padding-right: 14px;
+    padding-left: 14px;
+    border-right: 1px solid #6c757d;
+    font-weight: bold;
+}
+.Nav_link:active {
+    color: #8dc442;
+}
+.Nav_link:visited {
+    color: #fff;
+}
+.Nav_link:hover {
+    color: #39b54a;
+}
+.activeRoute {
+ cursor: not-allowed;
+}
+
+@media (max-width: 758px){
+    .ModelView .Nav_link{
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+}

@@ -1,0 +1,50 @@
+.IrinPuts-Components{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 80%;
+
+}
+.IrinPuts-Components label{
+    font-weight: bold;
+    margin-left: 4px;
+    font-size: .9rem;
+}
+.IrinPuts-Components #btn-1,#btn-2{
+    font-size: inherit;
+    font-weight: bold;
+    width: 74px;
+    height: 30px;
+    margin-left: 4px;
+    color: white;
+    background-color: #8dc442;
+   border: none;
+  
+}
+.component-1{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.component-2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.component-2 #btn-1{
+    background-color: #8dc442;
+    cursor: pointer;
+}
+.component-2 #btn-2{
+    background-color: #000000;
+    cursor: pointer;
+}
+.input-box{
+    width: 85px;
+    height: 20px;
+}

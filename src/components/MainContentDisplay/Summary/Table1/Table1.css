@@ -1,0 +1,7 @@
+#currency,#market,#isnno,#tcode,#sector,#mcap{
+    font-size: .8rem;
+    font-weight: bold;
+}
+.summaryTable{
+    margin-bottom: 25px;
+}

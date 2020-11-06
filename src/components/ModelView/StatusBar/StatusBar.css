@@ -1,0 +1,27 @@
+.StatusBar{
+    background-color: #32404C;
+    margin-top: 34px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    line-height: 0.6;
+}
+.StatusBar p{
+    font-weight: bold;
+}
+.StatusBar .col{
+    color: white;
+    padding-right: 13px;
+    border-right:  1px solid #6c757d ;
+}
+.StatusBar .coln:nth-last-child(1){
+    border-right: none;
+ }
+
+ @media (max-width: 758px){
+     .StatusBar .col{
+        border-right:none;
+     }
+ }

@@ -1,0 +1,14 @@
+.View{
+    width: 90%;
+    margin: auto;
+    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 100;
+}
+
+@media (max-width: 758px){
+    .View{
+        margin: 0;
+        width: 100%;
+    }
+}

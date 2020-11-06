@@ -1,0 +1,60 @@
+.trackerHead,.tracker-col-1-head{
+    padding-top: 20px;
+    width: 15%;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #ddd; 
+    
+}
+.tracker-col-1-head{
+    text-align: left;
+}
+.trackerHead{
+    text-align: center;
+}
+ 
+.tracker-col-1{
+    font-weight: bold;
+    text-align: left;
+    font-size: .9rem;
+}
+.tracker-data{
+    font-weight: bold;
+    padding-bottom: 18px;
+    text-align: right;
+    padding-right: 20px;
+    font-size: .9rem;
+}
+ 
+.neg{
+    color: red;
+}
+.pos{
+    color: #39b54a;
+}
+.yellow{
+    color: #FFBF00;
+}
+/* this is for yellow without the ust code symbol */
+.yello{
+    color: #FFBF00;
+}
+.neg::after{
+    content: "▼";
+    padding-left: 2px;
+}
+.pos::after{
+    content: "▲";
+    padding-left: 2px;
+}
+.yellow::after{
+    content:"⧫";
+    font-size: 13px;
+    padding-left: 2px;
+    margin-right: 3px;
+}
+
+@media (max-width: 900px){
+    .ovf{
+        overflow-x: auto; 
+    }
+}

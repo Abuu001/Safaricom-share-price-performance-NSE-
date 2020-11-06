@@ -1,0 +1,72 @@
+.HistoricalPrices{
+    margin-top: 26px;
+}
+#tr-period{
+    font-weight: bold;
+    padding-right: 9px;
+}
+.mselect{
+    margin-right: 9px;
+}
+#mitem{
+    width: 93px;
+    height: 28px;
+    -webkit-box-shadow: 1px 3px 18px 7px rgba(173,166,173,0.53);
+    -moz-box-shadow: 1px 3px 18px 7px rgba(173,166,173,0.53);
+    box-shadow: 1px 3px 18px 7px rgba(173,166,173,0.53);
+
+}
+.his-date-picker{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+.his-content{
+    display: flex;
+    justify-content: flex-end;
+}
+.histprices-table{
+    margin-top: 29px;
+
+}
+ 
+.hist-header,.hist-header-date{
+    font-weight: bold;
+    width: 5%;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    border-bottom: 2px solid #ddd; 
+    background-color:#ddd ;
+
+}
+.hist-header-date{
+    text-align: left;
+}
+.hist-table-data{
+    font-weight: bold;
+    font-size: .9rem;
+    padding-bottom: 8px;
+}
+.r{
+    text-align: right;
+    padding-right: 75px; 
+
+ }
+@media (max-width: 952px){
+    .his-date-picker{
+        width: 90%;
+        justify-content: flex-start;
+    }
+    .histprices-table{
+        overflow-x: auto;
+    }
+    .hist-header,.r{
+        padding-left: 80px;
+    }
+    .hist-header-date{
+        padding-right: 80px;
+    }
+}

@@ -1,0 +1,27 @@
+.TimeStatus{
+    width: 28%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: white;
+}
+
+.TimeStatus span{
+    color: #39b54a;
+    font-weight: bold;
+}
+.TimeStatus h4{
+    font-size: 18px;
+    /* color: #FFBF00; */
+}
+.TimeStatus .Time{
+    font-weight: bold;
+}
+@media (max-width: 758px){
+    .TimeStatus{
+        width: 60%;
+    }
+
+}
