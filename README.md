@@ -1,4 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Visit the link below to view the NSE clone
+   http://deveint.live/irnewV3/react/
 
 ## Available Scripts
 
