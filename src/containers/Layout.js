@@ -12,14 +12,14 @@ const Layout =()=>{
      
     const [code,setCode]=useState('');
     const [name,setName]=useState('');
-    const [price,setPrice]=useState('');
-    const [prev_price,setPrev_price]=useState('');
-    const [today_open,setToday_open]=useState('');
-    const [today_high,setToday_high]=useState('');
-    const [today_low,setToday_low]=useState('');
+    const [price,setPrice]=useState(0);
+    const [prev_price,setPrev_price]=useState(0);
+    const [today_open,setToday_open]=useState(0);
+    const [today_high,setToday_high]=useState(0);
+    const [today_low,setToday_low]=useState(0);
     const [turnover,setTurnover]=useState(0);
     const [volume,setVolume]=useState(0);
-    const [today_close,setToday_close]=useState('');
+    const [today_close,setToday_close]=useState(0);
     const [change,setChange]=useState(0);
     const [date,setDate]=useState('');
     const [time,setTime]=useState('');
@@ -56,7 +56,7 @@ const Layout =()=>{
         return()=>{
             clearInterval(getData())
         }
-    },[code,name,price,change,date,time,market_status,turnover,volume,prev_price,today_open,today_high,today_low,today_close]) 
+    },[]) 
 
     return(
         <div  className="View">
