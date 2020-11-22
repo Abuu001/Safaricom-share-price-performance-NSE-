@@ -52,7 +52,9 @@
     padding-left: 2px;
     margin-right: 3px;
 }
-
+.ovf{
+    margin-top: 45px;
+}
 @media (max-width: 900px){
     .ovf{
         overflow-x: auto; 
