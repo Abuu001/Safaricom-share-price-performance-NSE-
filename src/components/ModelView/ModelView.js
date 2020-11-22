@@ -79,41 +79,28 @@ const ModelView=(props)=>{
                 <Switch>
                     <Route 
                      path="/"  
-                     exact  render={
-                        ()=>(
-                            <StockGraphChart   />
-                        )}
+                     exact  
+                     component={StockGraphChart}
                     />
-
                     <Route 
                         path="/historical-prices" 
-                         render={
-                        ()=>(
-                            <HistoricalPrices   />
-                        )}
+                        component={HistoricalPrices}
+                        //  render={
+                        // ()=>(
+                        //     <HistoricalPrices   />
+                        // )}
                     />
-
                     <Route 
                        path="/tracker"  
-                        render={
-                        ()=>(
-                            <Tracker   />
-                        )}
+                       component={Tracker}
                     />
-
                     <Route 
                      path="/holdings-calculator"  
-                      render={
-                        ()=>(
-                            <HoldingsCalculator   />
-                        )}
+                     component={HoldingsCalculator}
                     />
                     <Route 
                       path="/summary" 
-                       render={
-                        ()=>(
-                            <Summary   />
-                        )}
+                      component={Summary}
                     />
                 </Switch>
             </div>
@@ -121,4 +108,4 @@ const ModelView=(props)=>{
     )
 }
 
-export default ModelView;
+export default React.memo(ModelView);

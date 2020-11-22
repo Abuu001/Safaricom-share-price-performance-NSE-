@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import "./HistoricalPrices.css" 
 import axios from "axios"
+import Spinner from "../../Spinner/Spinner"
 
 const HistoricalPrices =()=>{
     
@@ -8,17 +9,20 @@ const HistoricalPrices =()=>{
     const [issno]=useState("KE1000001402")
     const [month,setMonth]=useState("8")
     const [message,setMessage]=useState([])
-       
-    const getData=()=>{
-        axios.post("https://www.deveintapps.com/nseticker/api/v1/historical-prices",{ isinno :issno, year: year, month: month})
-        .then(res=>{
-            const tracker= JSON.stringify(res.data.message,undefined,4)
-            const trackerParsed =JSON.parse(tracker,undefined,4)
-            setMessage([...trackerParsed])
-        })
-    }
-       
+    const [isLoading,setIsLoading] =useState(false)
+            
     useEffect(()=>{
+
+        const getData=  ()=>{
+         axios.post("https://www.deveintapps.com/nseticker/api/v1/historical-prices",{ isinno :issno, year: year, month: month})
+           .then(res=>{
+               
+            const tracker=  JSON.stringify(res.data.message,undefined,4)
+            const trackerParsed =  JSON.parse(tracker,undefined,4)
+            setIsLoading(true)
+            setMessage([...trackerParsed])
+           })
+        }
         getData()
         //clear data 
         return()=>{
@@ -48,12 +52,33 @@ const HistoricalPrices =()=>{
                 <td className="hist-table-data r">{data.high}</td>
                 <td className="hist-table-data r">{data.low}</td>
                 <td className="hist-table-data r"><span className={color}>{data.close}</span></td>
-                <td className="hist-table-data r">{data.volume}</td>
-                <td className="hist-table-data r">{data.turnover}</td>
+                <td className="hist-table-data r">{Number.parseInt(data.volume)}</td>
+                <td className="hist-table-data r">{Number.parseInt(data.turnover)}</td>
             </tr>
         )
     })
-
+ 
+     const Table= ()=>{
+         return(
+            <div className="histprices-table">
+            <table>
+                <thead >
+                    <tr>
+                        <th className="hist-header-date ">Date</th>
+                        <th className="hist-header r">High</th>
+                        <th className="hist-header r" >Low</th>
+                        <th className="hist-header r">Close</th>
+                        <th className="hist-header r">Volume</th>
+                        <th className="hist-header r">Turnover</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {tableData}
+                </tbody>
+            </table>
+        </div>
+         )
+     }
          
     return(
         <div className="HistoricalPrices ">
@@ -80,6 +105,8 @@ const HistoricalPrices =()=>{
                     </div>
                     <div  className="mselect">
                         <select id="mitem" defaultValue="2020" onChange={(yrs)=>setYearHandler(yrs.target.value)}>
+                            <option  value="2022" >2022</option>
+                            <option  value="2021" >2021</option>
                             <option  value="2020" >2020</option>
                             <option  value="2019">2019</option>
                             <option  value="2018">2018</option>
@@ -97,28 +124,14 @@ const HistoricalPrices =()=>{
                     </div>
                 </div>
             </div>
-            <div className="histprices-table">
-                <table>
-                    <thead >
-                        <tr>
-                            <th className="hist-header-date ">Date</th>
-                            <th className="hist-header r">High</th>
-                            <th className="hist-header r" >Low</th>
-                            <th className="hist-header r">Close</th>
-                            <th className="hist-header r">Volume</th>
-                            <th className="hist-header r">Turnover</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            {tableData}
-                    </tbody>
-                </table>
-            </div>
+            {
+                isLoading ?  <Table /> : <Spinner />
+            }
         </div>
     )
  
 }
    
-export default HistoricalPrices;
+export default React.memo(HistoricalPrices);
 
  

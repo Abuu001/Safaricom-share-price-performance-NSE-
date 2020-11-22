@@ -10,30 +10,32 @@ const Summary =(props)=>{
     const  [isin_code,setIsin_code] =useState("");
     const  [ticker_code,setTicker_code] =useState("");
     const  [industry,setIndustry] =useState("");
-    const  [market_cap,setMarket_cap] =useState(0);
+    const  [market_cap,setMarket_cap] =useState("");
     const  [issno] =useState('KE1000001402');
     const  [corporate_actions,setCorporate_actions] =useState([]);
-
-    const getData=()=>{
-        
-        axios.post("https://www.deveintapps.com/nseticker/api/v1/summary",{ isinno : issno})
-        .then(res=>{
-            const summry= JSON.stringify(res.data.message,undefined,4)
-            const summryParsed =JSON.parse(summry,undefined,4)
-
-            setCurrency(summryParsed.currency)    
-            setIndustry(summryParsed.industry)
-            setIsin_code(summryParsed.isin_code)
-            setMarket(summryParsed.market)
-            setTicker_code(summryParsed.ticker_code)
-            setMarket_cap(summryParsed.market_cap)
-            setCorporate_actions([...summryParsed.corporate_actions])
-        })
-    }
+    const [isLoading,setIsLoading] =useState(false)
 
     useEffect(()=>{
-        getData()
 
+        const getData=  ()=>{
+        
+            axios.post("https://www.deveintapps.com/nseticker/api/v1/summary",{ isinno : issno})
+            .then(res=>{
+                const summry=   JSON.stringify(res.data.message,undefined,4)
+                const summryParsed =  JSON.parse(summry,undefined,4)
+    
+                setIsLoading(true)
+                setCurrency(summryParsed.currency)    
+                setIndustry(summryParsed.industry)
+                setIsin_code(summryParsed.isin_code)
+                setMarket(summryParsed.market)
+                setTicker_code(summryParsed.ticker_code)
+                setMarket_cap(summryParsed.market_cap)
+                setCorporate_actions([...summryParsed.corporate_actions])
+            })
+        }
+    
+        getData()
         return()=>{
             getData()
         }
@@ -43,24 +45,25 @@ const Summary =(props)=>{
         <div style={{overflowX:"auto"}}>
             <div >
                 <Table1
-                        currency={currency}
-                        market={market}
-                        isin_code={isin_code}
-                        ticker_code={ticker_code}
-                        industry={industry}
-                        market_cap={market_cap}
-                        />
+                    currency={currency}
+                    market={market}
+                    isin_code={isin_code}
+                    ticker_code={ticker_code}
+                    industry={industry}
+                    market_cap={market_cap}
+                    />
             </div>
             <div>
-                <Table2
-                        corporate_actions={corporate_actions}
-                />
+                <Table2  
+                corporate_actions={corporate_actions} 
+                isLoading={isLoading}
+                /> 
             </div>
         </div>
     )
     
 }
 
-export default Summary;
+export default React.memo(Summary);
 
  

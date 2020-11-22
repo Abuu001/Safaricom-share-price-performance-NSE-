@@ -23,7 +23,7 @@ const StatusBar=({turnover,volume,prev_price,today_close,today_open,today_low,to
                  <div><p className={color}>{today_high}</p></div>
             </div>
             <div className="col">
-                <div><h4>Dailly low </h4></div>
+                <div><h4>Daily low </h4></div>
                 <div><p className={color}>{today_low}</p></div>
             </div>
             <div className="col">
@@ -46,4 +46,4 @@ const StatusBar=({turnover,volume,prev_price,today_close,today_open,today_low,to
     )
 }
 
-export default StatusBar;
+export default React.memo(StatusBar);

@@ -12,7 +12,7 @@
     line-height: 2.7;
 }
 .table-row-tb-2:nth-child(odd){
-    background-color: #ddd;
+    background-color: rgb(238, 241, 231);
 }
 @media (max-width: 758px){
     .headTable2{

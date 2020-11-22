@@ -48,3 +48,46 @@
     width: 85px;
     height: 20px;
 }
+.portfolioTable{
+    padding-left: 5px;
+    
+}
+.headTable{
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #ddd; 
+}
+
+#ddisplay{
+    font-weight: bold;
+}
+table{
+    background-color: rgb(238, 241, 231);
+}
+#calcdatrow{
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 2.42857143;
+}
+#Totals{
+    font-size: 19px;
+}
+.HoldingGraph{
+    margin-bottom: 50px;
+}
+@media (max-width: 758px){
+    .headTable{
+        /* padding-right: 20px; */
+        font-size: .8rem;
+    }
+    #ddisplay{
+        font-size: .8rem;
+    }
+    #calcdatrow{
+        font-size: 14px;
+    }
+    #Totals{
+        font-size: 16px;
+    }
+}

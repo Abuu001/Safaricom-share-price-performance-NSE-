@@ -11,9 +11,9 @@
 #mitem{
     width: 93px;
     height: 28px;
-    -webkit-box-shadow: 1px 3px 18px 7px rgba(173,166,173,0.53);
-    -moz-box-shadow: 1px 3px 18px 7px rgba(173,166,173,0.53);
-    box-shadow: 1px 3px 18px 7px rgba(173,166,173,0.53);
+    -webkit-box-shadow: 1px 3px 18px 7px  rgb(238, 241, 231);;
+    -moz-box-shadow: 1px 3px 18px 7px  rgb(238, 241, 231);;
+    box-shadow: 1px 3px 18px 7px  rgb(238, 241, 231);;
 
 }
 .his-date-picker{
@@ -39,7 +39,7 @@
     padding-bottom: 4px;
     padding-top: 4px;
     border-bottom: 2px solid #ddd; 
-    background-color:#ddd ;
+    background-color: rgb(238, 241, 231);
 
 }
 .hist-header-date{

@@ -30,4 +30,4 @@ const Table1=({currency,market, isin_code, ticker_code,industry,market_cap})=>{
     )
 }
 
-export default Table1;
+export default React.memo(Table1);

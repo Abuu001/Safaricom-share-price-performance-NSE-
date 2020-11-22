@@ -1,7 +1,6 @@
 import React from "react";
 import IrinPuts from "./IrinPuts/IrinPuts";
-import "./HoldingsCalculator.css";
-import PortfolioTable from "./PortfolioTable/PortfolioTable"
+import "./HoldingsCalculator.css"
 
 const HoldingsCalculator=()=>{
     return(
@@ -12,9 +11,6 @@ const HoldingsCalculator=()=>{
             </div>
             <div>
                 <IrinPuts /> 
-            </div>
-            <div className="ovf">
-                <PortfolioTable />
             </div>
             <p style={{fontWeight:"bold",color:"black"}}>Note : Total  %Gain/Loss = (Total Gain/Loss)/Total Investment)*100</p>
         </div>

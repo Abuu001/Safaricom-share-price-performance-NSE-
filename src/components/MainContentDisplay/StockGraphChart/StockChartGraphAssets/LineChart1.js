@@ -1,59 +1,61 @@
 import React, { useState,useEffect } from "react";
 import CanvasJSReact from  '../../../../assets/canvasjs.stock.react'
+import Spinner from "../../../Spinner/Spinner";
+
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
  
 const LineChart1=()=>{
 
-    const [detailsTo,setDetailsTo]=useState(null)
-    const [detailsFrom,setDetailsFrom]=useState(null)
+  const [detailsTo,setDetailsTo]=useState(null)
+  const [detailsFrom,setDetailsFrom]=useState(null)
 
-    const [dataPoints1,setDataPoints1]=useState([])
-    const [dataPoints2,setDataPoints2]=useState([])
-    const [dataPoints3,setDataPoints3]=useState([])
-    const [isLoaded,setIsloaded]=useState(false)
-    const [issno] =useState('KE1000001402')
-    const [filter]=useState( '1Y' )
+  const [dataPoints1,setDataPoints1]=useState([])
+  const [dataPoints2,setDataPoints2]=useState([])
+  const [dataPoints3,setDataPoints3]=useState([])
+  const [isLoaded,setIsloaded]=useState(false)
+  const [issno] =useState('KE1000001402')
+  const [filter]=useState( '1Y' )
+
   
-    const getData=()=>{
-  
-      fetch("https://www.deveintapps.com/nseticker/api/v1/stock-chart", {
-              method: 'POST', 
-              body: JSON.stringify({
-                isinno : issno,
-                filter : filter
-              }),
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-              },
+
+  useEffect(()=>{
+
+    const getData= async ()=>{
+      try{
+        const res= await   fetch("https://www.deveintapps.com/nseticker/api/v1/stock-chart", {
+          method: 'POST', 
+          body: JSON.stringify({
+            isinno : issno,
+            filter : filter
+          }),
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
               
       })
-      .then(res => res.json())
-      .then(
-        (loop) => {
-        let dps1 = [], dps2 = [], dps3 = [];
-      
-       const To=loop.message.details.to
-       const From=loop.message.details.from 
-       
-        for (var i = 0; i < loop.message.price_volume.length; i++) {
-          dps1.push({ x: Number(new Date(loop.message.price_volume[i].date)),y:  Number(loop.message.price_volume[i].price)});
-          dps2.push({x: Number(new Date(loop.message.price_volume[i].date)), y: Number(loop.message.price_volume[i].volume)});
-          dps3.push({x: Number(new Date(loop.message.price_volume[i].date)), y: Number(loop.message.price_volume[i].volume)});
-        }
-        setIsloaded(true);
-        setDataPoints1(dps1)
-        setDataPoints2(dps2)
-        setDataPoints3(dps3)
-        setDetailsTo(To)
-        setDetailsFrom(From)
-
-      })
-
-  }
+      const loop  = await res.json()
+      let dps1 = [], dps2 = [], dps3 = [];
   
-  useEffect(()=>{
+      const To= await loop.message.details.to
+      const From= await loop.message.details.from 
+      
+      for (var i = 0; i < loop.message.price_volume.length; i++) {
+        dps1.push({ x: Number(new Date(loop.message.price_volume[i].date)),y:  Number(loop.message.price_volume[i].price)});
+        dps2.push({x: Number(new Date(loop.message.price_volume[i].date)), y: Number(loop.message.price_volume[i].volume)});
+        dps3.push({x: Number(new Date(loop.message.price_volume[i].date)), y: Number(loop.message.price_volume[i].volume)});
+      }
+      setIsloaded(true);
+      setDataPoints1(dps1)
+      setDataPoints2(dps2)
+      setDataPoints3(dps3)
+      setDetailsTo(To)
+      setDetailsFrom(From)
+      }catch(error){
+        console.log(error.message);
+      }
+    }
     getData()
 
     return()=>{
@@ -68,7 +70,8 @@ const LineChart1=()=>{
       axisY: [{
         tickLength: 0,
         interval: 0,
-
+        gridColor: "dimGrey",
+        gridThickness: .5,
         lineColor: "blue"
       }],
       axisX: [{
@@ -186,9 +189,12 @@ const LineChart1=()=>{
   return (
     <div> 
       <div>
-        {
+        {/* {
           isLoaded && 
           <CanvasJSStockChart containerProps={containerProps} options = {options} />
+        } */}
+       {
+          isLoaded ? <CanvasJSStockChart containerProps={containerProps} options = {options} /> : <Spinner/> 
         }
       </div>
     </div>
