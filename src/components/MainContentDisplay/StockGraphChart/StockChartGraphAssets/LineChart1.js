@@ -42,7 +42,7 @@ const LineChart1=()=>{
       const From= await loop.message.details.from 
       
       for (var i = 0; i < loop.message.price_volume.length; i++) {
-        dps1.push({ x: Number(new Date(loop.message.price_volume[i].date)),y:  Number(loop.message.price_volume[i].price)});
+        dps1.push({x: Number(new Date(loop.message.price_volume[i].date)), y: Number(loop.message.price_volume[i].price)});
         dps2.push({x: Number(new Date(loop.message.price_volume[i].date)), y: Number(loop.message.price_volume[i].volume)});
         dps3.push({x: Number(new Date(loop.message.price_volume[i].date)), y: Number(loop.message.price_volume[i].volume)});
       }
@@ -67,18 +67,18 @@ const LineChart1=()=>{
     charts: [{
       animationEnabled : true,
       animationDuration:1200,
-      axisY: [{
+      axisY: {
         tickLength: 0,
         interval: 0,
         gridColor: "dimGrey",
         gridThickness: .5,
         lineColor: "blue"
-      }],
-      axisX: [{
+      },
+      axisX: {
         lineThickness: 2,
         tickLength: 0,
-        labelFormatter: function(e) {
-          return "";
+        labelFormatter: function (e) {
+          return CanvasJS.formatDate( e.value, "DD MMM");
         },
         crosshair: {
           enabled: true,
@@ -90,7 +90,7 @@ const LineChart1=()=>{
             return "";
           }
         }
-      }],
+      },
 
       toolTip: {
         shared: true,
@@ -138,7 +138,6 @@ const LineChart1=()=>{
         color:'#39b54a',
         valueFormatString:"#,###,,.##M",
         dataPoints :dataPoints2
-       
       }]
     }],
     navigator: {
@@ -157,15 +156,16 @@ const LineChart1=()=>{
     },
     rangeSelector: {
       label: "Filter", 
-        inputFields: {
-          startValue: Number(new Date(detailsFrom)),
-          endValue: Number(new Date(detailsTo)),
-          style: {
-            borderColor: "#bbb8b8",
-            borderColorOnFocus: "black",
-            FontFamily: "ubuntu",
-          }
-        },
+      inputFields: {
+        enabled: false,
+        // startValue: Number(new Date(detailsFrom)),
+        // endValue: Number(new Date(detailsTo)),
+        style: {
+          borderColor: "#bbb8b8",
+          borderColorOnFocus: "black",
+          FontFamily: "ubuntu",
+        }
+      },
       buttonStyle: {
         backgroundColor: "#e3e3e3",
         backgroundColorOnHover: "#39b54a", 

@@ -102,17 +102,20 @@ const IrinPuts=()=>{
     },[])
 
     const totalsInvestment=  datarow.reduce((prev,curr)=>{
-        return  Number.parseFloat(prev  +  +curr.invest); 
+        const tInv= (prev  +  +curr.invest);
+        return  Number.parseFloat((tInv * +1).toFixed(2)); 
     },[])
     
     const totalsGain=  datarow.reduce((prev,curr)=>{
-        return  Number.parseFloat(prev  +  +curr.gain) ; 
+        const tttGain =(prev  +  +curr.gain);
+        return  Number.parseFloat((tttGain *+1).toFixed(2)) ; 
     },[])
     
     const totalsPercent=  datarow.reduce((prev,curr)=>{
         // const totpercent = (curr.gain / curr.invest)*100;
        //    const totpercent = ((prev  +  +curr.gain) /  (prev  +  +curr.invest)*100);
         // return  Number.parseFloat(prev  +  +curr.percent).toFixed(2);
+        
         const tgain= (prev +  +curr.gain);
         const tinvest = (prev +  +curr.invest);
         return  Number.parseFloat((tgain / tinvest *+100).toFixed(2));
@@ -121,8 +124,13 @@ const IrinPuts=()=>{
     const totalsCurrentValuation=  datarow.reduce((prev,curr)=>{
        // (data.quantity * data.price) +  data.gain
        // (curr.quantity * curr.price) +  data.gain
-       const totcurr=((prev + +curr.quantity *  +curr.price) +  +curr.gain);
-        return  Number.parseFloat(totcurr); 
+      //  const totcurr=((prev + +curr.quantity *  +curr.price) +  +curr.gain);
+    
+        const t1=(prev + +curr.quantity);
+        const t2 =(curr.price);
+        const t3 =(curr.gain);
+        const totcurr=((t1* t2 ) +  +t3);
+       return  Number.parseFloat((totcurr * +1).toFixed(2)); 
     },[])
     
    const cancelHandler=()=>{
@@ -135,6 +143,10 @@ const IrinPuts=()=>{
 
     let percentColor;
     totalsPercent<1 ?  percentColor="red" :  percentColor="#39b54a";
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
 
     return(
         <div>
@@ -173,8 +185,8 @@ const IrinPuts=()=>{
                             <tr>
                                 <td id="Totals"  colSpan="2" style={{textAlign: "center"}}>Totals : </td>
                                 <td id="Totals" >{totalsQuantity}</td>
-                                <td  id="Totals">{totalsInvestment}</td>
-                                <td  id="Totals">{totalsCurrentValuation}</td>
+                                <td  id="Totals">{numberWithCommas(totalsInvestment)}</td>
+                                <td  id="Totals">{numberWithCommas(totalsCurrentValuation)}</td>
                                 <td style={{ color: gainColor}}  id="Totals">{`${totalsGain} KES`}</td>
                                 <td  style={{ color: percentColor}} id="Totals">{totalsPercent}</td>
                                 <td></td>

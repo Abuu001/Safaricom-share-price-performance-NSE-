@@ -11,6 +11,9 @@ const StatusBar=({turnover,volume,prev_price,today_close,today_open,today_low,to
     }else{
         color="pos"
     }
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
 
     return(
         <div className="StatusBar">
@@ -36,11 +39,11 @@ const StatusBar=({turnover,volume,prev_price,today_close,today_open,today_low,to
             </div>
             <div className="col">
                 <div><h4>Volume</h4></div>
-               <div><p className={color}>{volume}</p></div>
+               <div><p className={color}>{numberWithCommas(volume)}</p></div>
             </div>
             <div className="col coln">
                 <div><h4>TurnOver</h4></div>
-                <div><p className={color}>{turnover}</p></div>
+                <div><p className={color}>{numberWithCommas(turnover)}</p></div>
             </div>
         </div>
     )

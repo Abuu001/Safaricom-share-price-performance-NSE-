@@ -33,10 +33,11 @@ const HoldingCalculatorGraph =({startDate,price,quantity})=> {
         const data = await json.message.graph
         let dps1 = [], dps2 = []
 
-        for (let i = 0; i < data.length; i++) {
-            dps1.push({ x: Number(new Date(JSON.stringify(data[i].date,undefined,4))),y:  Number(JSON.stringify(data[i].price,undefined,4))});
-            dps2.push({x: Number(new Date(JSON.stringify(data[i].date,undefined,4))), y: Number(JSON.stringify(data[i].prev_price,undefined,4))});
+          for (let i = 0; i < data.length; i++) {
+            dps1.push({ x: new Date(data[i].date),y:  Number(JSON.stringify(data[i].price,undefined,4))});
+            dps2.push({x: new Date(data[i].date), y: Number(JSON.stringify(data[i].prev_price,undefined,4))});
         }
+    
         setIsLoading(true)
         setDataPoints1(dps1)
         setDataPoints2(dps2)
@@ -85,7 +86,7 @@ const HoldingCalculatorGraph =({startDate,price,quantity})=> {
             title: " Price",
             showInLegend:true,
             legendText: "Price",
-            xValueFormatString: "MMM YYYY",
+            xValueFormatString: "DD MMM YYYY",
             yValueFormatString: "#,##0",
             color:'#39b54a',
             axisYType: "secondary",
@@ -99,7 +100,7 @@ const HoldingCalculatorGraph =({startDate,price,quantity})=> {
             legendText: "Prev Price",
             yValueFormatString: "#,##0",
             axisYType: "primary",
-           dataPoints: dataPoints2    
+            dataPoints: dataPoints2    
         }
     ]
     }

@@ -46,14 +46,18 @@ const HistoricalPrices =()=>{
         } else{
             color="pos"
         }
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
         return(
             <tr key={data.date}>
                 <td className="hist-table-data ">{data.date}</td>
                 <td className="hist-table-data r">{data.high}</td>
                 <td className="hist-table-data r">{data.low}</td>
                 <td className="hist-table-data r"><span className={color}>{data.close}</span></td>
-                <td className="hist-table-data r">{Number.parseInt(data.volume)}</td>
-                <td className="hist-table-data r">{Number.parseInt(data.turnover)}</td>
+                <td className="hist-table-data r">{numberWithCommas(data.volume)}</td>
+                <td className="hist-table-data r">{numberWithCommas(data.turnover)}</td>
             </tr>
         )
     })
@@ -118,8 +122,6 @@ const HistoricalPrices =()=>{
                             <option  value="2012">2012</option>
                             <option  value="2011">2011</option>
                             <option  value="2010">2010</option>
-                            <option  value="2009">2009</option>
-                            <option  value="2008">2008</option>
                         </select>
                     </div>
                 </div>

@@ -2,6 +2,9 @@ import React from "react";
 import "./Table1.css" 
 
 const Table1=({currency,market, isin_code, ticker_code,industry,market_cap})=>{
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
     return(
         <div >
             <table className="summaryTable">
@@ -22,7 +25,7 @@ const Table1=({currency,market, isin_code, ticker_code,industry,market_cap})=>{
                        <td  id="isnno" >{isin_code}</td>
                        <td  id="tcode" >{ticker_code}</td>
                        <td  id="sector" >{industry}</td>
-                       <td  id="mcap" >{market_cap}</td>
+                       <td  id="mcap" >{numberWithCommas(market_cap)}</td>
                    </tr>
                </tbody>
             </table>

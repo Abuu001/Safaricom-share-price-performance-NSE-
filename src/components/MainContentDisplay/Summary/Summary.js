@@ -2,6 +2,7 @@ import React,{useState,useEffect} from "react";
 import Table1 from "./Table1/Table1" 
 import Table2 from "./Table2/Table2";
 import axios from "axios";
+import Spinner from "../../Spinner/Spinner"
 
 const Summary =(props)=>{
   
@@ -13,7 +14,7 @@ const Summary =(props)=>{
     const  [market_cap,setMarket_cap] =useState("");
     const  [issno] =useState('KE1000001402');
     const  [corporate_actions,setCorporate_actions] =useState([]);
-    const [isLoading,setIsLoading] =useState(false)
+    const [isLoading,setIsLoading] =useState(true)
 
     useEffect(()=>{
 
@@ -24,7 +25,7 @@ const Summary =(props)=>{
                 const summry=   JSON.stringify(res.data.message,undefined,4)
                 const summryParsed =  JSON.parse(summry,undefined,4)
     
-                setIsLoading(true)
+                setIsLoading(false)
                 setCurrency(summryParsed.currency)    
                 setIndustry(summryParsed.industry)
                 setIsin_code(summryParsed.isin_code)
@@ -54,10 +55,9 @@ const Summary =(props)=>{
                     />
             </div>
             <div>
-                <Table2  
-                corporate_actions={corporate_actions} 
-                isLoading={isLoading}
-                /> 
+                {
+                    isLoading === true ?   <Spinner />  :   <Table2  corporate_actions={corporate_actions}   /> 
+                }
             </div>
         </div>
     )
