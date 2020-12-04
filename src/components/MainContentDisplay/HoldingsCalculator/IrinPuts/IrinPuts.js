@@ -26,7 +26,6 @@ const IrinPuts=()=>{
             const vTable=  await JSON.stringify(res.data.message.price,undefined,4);
             const vTableParsed =await JSON.parse(vTable,undefined,4);
             setPrice(vTableParsed);
- 
         }
       const   getData2=()=>{
             axios.post("https://www.deveintapps.com/nseticker/api/v1/holdings-calculator",{ isinno : issno , price:price, type:type, quantity:quantity ,date :startDate})
